@@ -11,9 +11,13 @@ interface FuncionarioEfetivo extends Funcionario {
   calculaParticipacaoDeLucros(lucro: number): number;
 }
 
-interface FuncionarioVoluntario extends Funcionario {
+interface Pesquisador {
+  nome: string;
+  cargaHoraria: number;
   escreveRelatorio(): void;
+  trabalha(): void;
 }
+
 class FuncionarioEfetivo implements FuncionarioEfetivo {
   constructor(nome: string, cargaHoraria: number, salario: number) {
     this.nome = nome;
@@ -37,7 +41,7 @@ class FuncionarioEfetivo implements FuncionarioEfetivo {
   }
 }
 
-class FuncionarioVoluntario implements FuncionarioVoluntario {
+class Pesquisador implements Pesquisador {
   orientador: Funcionario;
 
   constructor(
@@ -64,7 +68,7 @@ class FuncionarioVoluntario implements FuncionarioVoluntario {
 }
 
 const funcionarioEfetivo = new FuncionarioEfetivo('João', 40, 2400);
-const funcionarioVoluntario = new FuncionarioVoluntario(
+const pesquisador = new Pesquisador(
   'Enzo',
   20,
   funcionarioEfetivo
@@ -82,6 +86,6 @@ console.log(
 funcionarioEfetivo.trabalha();
 
 //Voluntário
-console.log('nome:', funcionarioVoluntario.nome);
-funcionarioVoluntario.trabalha();
-funcionarioVoluntario.escreveRelatorio();
+console.log('nome:', pesquisador.nome);
+pesquisador.trabalha();
+pesquisador.escreveRelatorio();
